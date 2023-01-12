@@ -25,3 +25,7 @@ nav ul li p {
     display: inline;
 }
 
+button {
+  margin: 20px 0;
+}
+

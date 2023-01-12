@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="styles.css" />
-    <script defer src="script.js"></script>
+    <!--adding the "defer" attribute makes sure that the HTML is loaded before the JS starts to run -->
+    <script src="script.js" defer></script>
   </head>
   <body>
     <header>
@@ -19,11 +20,13 @@
             <li>
               <h2>Joe Banker</h2>
               <p>Balance</p>
-              <p>200kr</p>
+              <p id="current-balance" type="number">200</p>
+
               <br />
               <div id="outstanding-loan">
                 <p>Outstanding loan:</p>
-                <p>0kr</p>
+                <p id="current-loan">0kr</p>
+                <button id="repay-loan-btn">Repay loan</button>
               </div>
               <br />
               <button id="loan-btn">Get loan</button>
@@ -31,9 +34,10 @@
             <li>
               <h2>Work</h2>
               <p>Pay</p>
-              <p>0kr</p>
-              <button>Bank</button>
-              <button>Work</button>
+              <p id="current-salary">0</p>
+              <br />
+              <button id="bank-btn">Bank</button>
+              <button id="work-btn">Work</button>
             </li>
             <li>
               <h2>Laptops</h2>
