@@ -6,17 +6,15 @@ const loanBtn = document.getElementById("loan-btn");
 const repayLoanbtn = document.getElementById("repay-loan-btn");
 const bankBtn = document.getElementById("bank-btn");
 const workBtn = document.getElementById("work-btn");
-const outstandingLoan = document.getElementById("outstanding-loan");
+const outstandingLoan = document.getElementById("outstanding-loan"); //DEBT
 const currentBalanceElement = document.getElementById("current-balance");
 const currentLoanElement = document.getElementById("current-loan");
 const currentSalaryElement = document.getElementById("current-salary");
 
-//console.log(currentBalanceElement.innerText)
-
 let balance = parseInt(currentBalanceElement.innerText);
-//console.log(typeof(balance))
-let hasLoan = false;
 let salary = parseInt(currentSalaryElement.innerText);
+let debt = parseInt(currentLoanElement.innerText);
+let hasLoan = false;
 
 if (!hasLoan) {
   outstandingLoan.style.display = "none";
@@ -24,21 +22,6 @@ if (!hasLoan) {
 } else {
   outstandingLoan.style.display = "block";
 }
-
-/*function getLoan(input) {
-  input = prompt("enter a loan amount: ");
-
-  if (balance != 0 && input >= balance * 2) {
-    console.log("cannot get a loan double the amount of current balance");
-  } else if (hasLoan) {
-    console.log("cannot get new loan before repaying current");
-  } else {
-    hasLoan = true;
-    balance = input;
-  }
-}*/
-
-//loanBtn.addEventListener("click", getLoan())
 
 loanBtn.addEventListener("click", () => {
   var input = parseInt(prompt("enter a loan amount: "));
@@ -49,7 +32,7 @@ loanBtn.addEventListener("click", () => {
     return;
   }
 
-  if (balance != 0 && input >= balance * 2) {
+  if (balance != 0 && input > balance * 2) {
     console.log("cannot get a loan double the amount of current balance");
   } else if (hasLoan) {
     console.log("cannot get new loan before repaying current");
@@ -66,6 +49,9 @@ loanBtn.addEventListener("click", () => {
 
     //the loan button should just disappear, because customer can only obtain one loan a time.
     loanBtn.style.display = "none";
+
+    //update current debt/loan
+    debt = input;
     currentLoanElement.innerText = input;
 
     console.log("current balance: " + balance);
@@ -73,32 +59,62 @@ loanBtn.addEventListener("click", () => {
   }
 });
 
-//reward work
+//WORK REWARD
 workBtn.addEventListener("click", () => {
   let reward = 100;
-  salary += reward;
-  currentSalaryElement.innerHTML = salary;
-});
-
-//transfer salary to balance
-bankBtn.addEventListener("click", () => {
   const INTEREST = 0.1;
-  console.log(salary);
-  console.log(hasLoan);
+  salary += reward;
+
   if (hasLoan) {
-    let interestAmount = salary * INTEREST;
-    console.log("10% of " + salary + " is " + interestAmount);
-    salary -= interestAmount;
+    let interestCost = salary * INTEREST;
+    console.log(`10% of ${salary} is ${interestCost}`);
+    salary -= interestCost;
   }
-  console.log("salary after interest: " + salary);
-  console.log("transferred " + salary + " to your bank account.")
-  balance += salary;
-  currentBalanceElement.innerHTML = balance;
-  salary = 0;
   currentSalaryElement.innerHTML = salary;
 });
 
-repayLoanbtn.addEventListener("click", () => {});
+//TRANSFER SALARY TO BALANCE
+bankBtn.addEventListener("click", () => {
+  if(salary === 0){
+    throw new Error("you have no money to transfer!")
+  }
+  if (hasLoan) {
+    throw new Error("cannot transfer funds before repaying current debt!");
+  } else {
+    console.log("transferred " + salary + " to your bank account.");
+    balance += salary;
+    currentBalanceElement.innerHTML = balance;
+    salary = 0;
+    currentSalaryElement.innerHTML = salary;
+    hasLoan = false;
+  }
+});
+
+//REPAY LOAN
+repayLoanbtn.addEventListener("click", () => {
+  //validate that customer can't go below 0
+  if(debt <= 0){
+    throw new Error("you don't have any debt!");
+  }
+
+  if (salary > debt) {
+    console.log("salary is greater")
+    salary -= debt; 
+    debt = 0;
+    hasLoan = false;
+    currentSalaryElement.innerText = salary;
+    currentLoanElement.innerText = debt;
+
+  }
+  if(salary < debt){
+    console.log("salary is smaller")
+    debt -= salary;
+    salary = 0;
+    currentSalaryElement.innerText = salary;
+    currentLoanElement.innerText = debt;
+  }
+  //return debt;
+});
 
 /******Current Bugs:******/
 //When user presses the escacpe key to leave prompt
