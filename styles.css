@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-body{
-    margin: 0;
-    font-family: 'Roboto', sans-serif
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 header h1 {
   color: white;
@@ -14,18 +14,40 @@ header {
   background-color: black;
 }
 
-nav ul{
-    list-style: none; 
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;  
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
 }
 
 nav ul li p {
-    display: inline;
+  display: inline;
 }
 
 button {
   margin: 20px 0;
 }
 
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+#details-list {
+  margin: 10px 0;
+  display: list-item;
+  list-style: circle;
+}
+
+#info-section {
+  text-align: center;
+}
+
+#buy-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

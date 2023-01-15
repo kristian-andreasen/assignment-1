@@ -75,8 +75,8 @@ workBtn.addEventListener("click", () => {
 
 //TRANSFER SALARY TO BALANCE
 bankBtn.addEventListener("click", () => {
-  if(salary === 0){
-    throw new Error("you have no money to transfer!")
+  if (salary === 0) {
+    throw new Error("you have no money to transfer!");
   }
   if (hasLoan) {
     throw new Error("cannot transfer funds before repaying current debt!");
@@ -93,21 +93,20 @@ bankBtn.addEventListener("click", () => {
 //REPAY LOAN
 repayLoanbtn.addEventListener("click", () => {
   //validate that customer can't go below 0
-  if(debt <= 0){
+  if (debt <= 0) {
     throw new Error("you don't have any debt!");
   }
 
   if (salary > debt) {
-    console.log("salary is greater")
-    salary -= debt; 
+    console.log("salary is greater");
+    salary -= debt;
     debt = 0;
     hasLoan = false;
     currentSalaryElement.innerText = salary;
     currentLoanElement.innerText = debt;
-
   }
-  if(salary < debt){
-    console.log("salary is smaller")
+  if (salary < debt) {
+    console.log("salary is smaller");
     debt -= salary;
     salary = 0;
     currentSalaryElement.innerText = salary;
@@ -116,6 +115,95 @@ repayLoanbtn.addEventListener("click", () => {
   //return debt;
 });
 
-/******Current Bugs:******/
-//When user presses the escacpe key to leave prompt
-//they will get a "cannot get new loan before repaying current" error
+/*
+PART 3
+*/
+
+const selectBtn = document.querySelector("select");
+const infoSection = document.querySelector("#info-section");
+
+const fetchData = async (url) => {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  const data = await response.json();
+  return data;
+};
+
+baseURL = "https://hickory-quilled-actress.glitch.me/computers";
+assetsURL = "https://hickory-quilled-actress.glitch.me/";
+let laptops;
+
+fetchData(baseURL)
+  .then((data) => {
+    laptops = data;
+    // Loop through the data and create <option> elements for each laptop
+    for (const laptop of data) {
+      const option = document.createElement("option");
+      option.value = laptop.title;
+      option.innerHTML = laptop.title;
+      selectBtn.appendChild(option);
+    }
+    // Log the data to the console for debugging purposes
+    console.log(data);
+    //console.log("test " + laptops)
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+const displayInfo = (laptop) => {
+  const infoSection = document.querySelector("#info-section");
+  //laptopImg.src = assetsURL+laptop.image;
+  infoSection.innerHTML = `
+        <h2>${laptop.title}</h2>
+        <p>${laptop.description}</p>
+        <img src="${assetsURL + laptop.image}">
+        <p>Price: ${laptop.price}</p>
+      `;
+};
+
+const updateUI = (laptop) => {
+  const specsList = document.querySelector(".details ul");
+  specsList.innerHTML = "";
+  laptop.specs.forEach((spec) => {
+    const li = document.createElement("li");
+    li.innerHTML = spec;
+    specsList.appendChild(li);
+  });
+  displayInfo(laptop);
+};
+
+//Add event listener to the <select> element
+selectBtn.addEventListener("change", (event) => {
+  //Get the value of the selected option
+  const selectedValue = event.target.value;
+
+  //Find the selected laptop in the laptops array
+  const selectedLaptop = laptops.find(
+    (laptop) => laptop.title === selectedValue
+  );
+  // Log the data to the console for debugging purposes
+  //console.log(selectedLaptop);
+  updateUI(selectedLaptop);
+});
+
+//Info section should show the laptop's title, description, image, and price
+
+buyBtn = document.getElementById("buy-btn");
+
+buyBtn.addEventListener("click", () => {
+  const selectedValue = selectBtn.value;
+  const selectedLaptop = laptops.find(
+    (laptop) => laptop.title === selectedValue
+  );
+  if (balance >= selectedLaptop.price) {
+    balance -= selectedLaptop.price;
+    currentBalanceElement.innerText = balance;
+    console.log("Purchase successful! Your new balance is: " + balance);
+  } else {
+    console.log("Insufficient funds. Your current balance is: " + balance);
+  }
+});
