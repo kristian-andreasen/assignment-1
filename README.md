@@ -60,4 +60,4 @@ Once you have your repository, you can get to work.
    git branch -d my-feature
    ```
 ## Pull request guidelines
-Please follow the  Conventional Commits specification for writing commit messages: ([Conventional Commits]https://www.conventionalcommits.org/en/v1.0.0/)
+Please follow the  Conventional Commits specification for writing commit messages: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
