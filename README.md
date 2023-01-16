@@ -10,6 +10,9 @@ Table of contents
 
 
 ## Overview
+This website is a computer store that fetches the inventory from an API. The website gives an user a bank account with a balance starting at 200 DKK. The user is able to be rewarded 100 DKK for pressing the "work" button, and can transfer money to their bank balance with the "bank" button. There is also a "get loan" button that allows the user to take a loan, but the loan amount can not be doubled their current balance. The user can not get another loan before repaying their current loan. If the user has a loan then 10% of their salary is deducted, and the user can not transfer their salary to their bank account, if they currently have a loan. 
+
+When using the website open the Dev Tool in your browser, since all of the communication with the user is displayed in the console.
 
 This website uses vanilla JavaScript to make the page interactive by dynamically manipulating the DOM. However there is no backend, so data is not saved and stored for the user. This means that every time the user refreshes the page, all changes are lost.
 
