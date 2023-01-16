@@ -58,8 +58,9 @@ loanBtn.addEventListener('click', () => {
     debt = input;
     currentLoanElement.innerText = input;
 
-    console.log('current balance: ' + balance);
-    console.log('has loan: ' + hasLoan);
+    //console.log() for debugging purposes
+    //console.log('current balance: ' + balance);
+    //console.log('has loan: ' + hasLoan);
   }
 });
 
@@ -185,7 +186,7 @@ selectBtn.addEventListener('change', (event) => {
     (laptop) => laptop.title === selectedValue
   );
   // Log the data to the console for debugging purposes
-  console.log(selectedLaptop);
+  //console.log(selectedLaptop);
 
   //callback
   updateUI(selectedLaptop);
@@ -211,7 +212,8 @@ buyBtn.addEventListener('click', () => {
     currentBalanceElement.innerText = balance;
     console.log('Purchase successful! Your new balance is: ' + balance);
     selectedLaptop.stock -= 1;
-    console.log(selectedLaptop.stock);
+    //logging stock for debugging purposes
+    //console.log(selectedLaptop.stock);
   } else {
     console.log('Insufficient funds. Your current balance is: ' + balance);
   }
