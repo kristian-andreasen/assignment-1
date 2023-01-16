@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 header h1 {
   color: white;
@@ -26,7 +26,8 @@ nav ul li p {
 }
 
 button {
-  margin: 20px 0;
+  margin: 10px 0;
+  padding: 5px;
 }
 
 img {
@@ -39,7 +40,11 @@ img {
 #details-list {
   margin: 10px 0;
   display: list-item;
-  list-style: circle;
+  /*list-style: circle;*/
+}
+
+#details-list li {
+  list-style: inside;
 }
 
 #info-section {
