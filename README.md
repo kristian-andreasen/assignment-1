@@ -13,6 +13,7 @@ This website uses vanilla JavaScript to make the page interactive by dynamically
 - Write custom CSS to style HTML elements and layouts
 
 ## Contributing Guide
+
 How to get started editing the code and creating your first pull request.
 
 ### Getting started
@@ -59,5 +60,11 @@ Once you have your repository, you can get to work.
    ```sh
    git branch -d my-feature
    ```
+
 ## Pull request guidelines
-Please follow the  Conventional Commits specification for writing commit messages: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
+Please follow the Conventional Commits specification for writing commit messages: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
+- Write a good title that quickly describes what has been changed.
+- Write a PR body to describe, in as much detail as possible, why the changes are being made.
+- Expect review and discussion. If you cannot back up your changes with a good description and through review, please reconsider whether it should be done at all.
