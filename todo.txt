@@ -1,0 +1,2 @@
+*Try to create a class for bank account in separate module, and then import to script.js
+*This is also called revealing module design pattern.

@@ -1,3 +1,6 @@
+//default import
+import fetchData from './data.js';
+
 /**
  * Selecting HTML elements using query methods and storing them in variables.
  */
@@ -128,24 +131,8 @@ PART 3
 const selectBtn = document.querySelector('select');
 const infoSection = document.querySelector('#info-section');
 
-//This function returns a promise which when resolved returns the data
-//fetched from the API.
-const fetchData = async (url) => {
-  //fetch data from the API
-  const response = await fetch(url);
-
-  //the purpose of this if-statement is catch resolved responses
-  //where the status code is non-2xx. Otherwise they will be treated as successful requests
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  //parse the response.body property with the json() method
-  const data = await response.json();
-  return data;
-};
-
-baseURL = 'https://hickory-quilled-actress.glitch.me/computers';
-assetsURL = 'https://hickory-quilled-actress.glitch.me/';
+let baseURL = 'https://hickory-quilled-actress.glitch.me/computers';
+let assetsURL = 'https://hickory-quilled-actress.glitch.me/';
 let laptops;
 
 fetchData(baseURL)
@@ -206,7 +193,7 @@ selectBtn.addEventListener('change', (event) => {
 
 //Info section should show the laptop's title, description, image, and price
 
-buyBtn = document.getElementById('buy-btn');
+let buyBtn = document.getElementById('buy-btn');
 
 buyBtn.addEventListener('click', () => {
   const selectedValue = selectBtn.value;
