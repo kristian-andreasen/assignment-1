@@ -1,5 +1,14 @@
 # Assignment 1
 
+Table of contents
+- [Overview](#overview)
+- [Learning goals](#learning-goals')
+- [Contributing guide](#contributing-guide)
+   - [Getting Started](#getting-started)
+   - [Making changes](#making-changes)
+- [Pull request guidelines](#pull-request-guidelines)
+
+
 ## Overview
 
 This website uses vanilla JavaScript to make the page interactive by dynamically manipulating the DOM. However there is no backend, so data is not saved and stored for the user. This means that every time the user refreshes the page, all changes are lost.
@@ -21,7 +30,7 @@ How to get started editing the code and creating your first pull request.
 - Make sure you have a [GitHub account](https://github.com/join).
 - Fork the repository on GitHub.
 - Clone or download your fork to your local machine.
-- Once you're up and running, find an interesting issue to fix. 
+- Once you're up and running, find an interesting issue to fix.
 
 ### Making changes
 
@@ -63,17 +72,20 @@ Once you have your repository, you can get to work.
    ```
 
 ## Pull request guidelines
+
 After the changes are made in your branch, you're ready to submit a pull request.
 Please follow the Conventional Commits specification for writing commit messages: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 #### Considerations before submitting a pull request
-* Did you manually test your new change?
-* Does your pull request fix multiple issues? If so, you may consider breaking into separate pull requests.
-* Expect review and discussion. If you cannot back up your changes with a good description and through review, please reconsider whether it should be done at all.
+
+- Did you manually test your new change?
+- Does your pull request fix multiple issues? If so, you may consider breaking into separate pull requests.
+- Expect review and discussion. If you cannot back up your changes with a good description and through review, please reconsider whether it should be done at all.
 
 #### Each pull request should include
-* a descriptive title
-* a short summary of the changes
-* a reference to the issue that it fixes
-* steps to test the fix (if applicable)
-* for design-related changes, it is helpful to include screenshots
+
+- a descriptive title
+- a short summary of the changes
+- a reference to the issue that it fixes
+- steps to test the fix (if applicable)
+- for design-related changes, it is helpful to include screenshots
